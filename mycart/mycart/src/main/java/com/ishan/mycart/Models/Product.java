@@ -1,9 +1,6 @@
 package com.ishan.mycart.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class Product {
@@ -13,8 +10,36 @@ public class Product {
     private String product_description;
     private double product_price;
     @ManyToOne
-    @JoinColumn(name="category_id", nullable = false)
+    @JoinColumn(name="category_id", nullable = true)
     private Category category;
+    private String imageName;
+    private String imageType;
+    @Lob
+    private byte[] imageData;
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public String getImageType() {
+        return imageType;
+    }
+
+    public void setImageType(String imageType) {
+        this.imageType = imageType;
+    }
+
+    public byte[] getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(byte[] imageData) {
+        this.imageData = imageData;
+    }
 
     public Product() {
     }
